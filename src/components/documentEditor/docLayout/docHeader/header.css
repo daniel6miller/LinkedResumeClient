@@ -1,0 +1,86 @@
+/* General Styling */
+.bx {
+  color: black;
+  font-size: 30px;
+}
+
+/* Navigation Styling */
+.navTop {
+  max-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0; /* Add padding for spacing */
+}
+
+.navTop img {
+  max-height: 50px; /* Limit the size of the image to prevent oversized height */
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+}
+
+.title-author {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px; /* Add margin to separate from the logo */
+}
+
+.title-author h3 {
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow if text is too long */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  font-size: 16px; /* Adjust font size as needed */
+  margin: 0; /* Add margin for spacing */
+}
+
+.title-author p {
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: visible; /* Allow overflow to be visible */
+  text-overflow: clip; /* Clip the text if it overflows */
+  font-size: 14px; /* Adjust font size as needed */
+  margin: 0; /* Add margin for spacing */
+}
+
+.navTitle {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.link-nav {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navItem p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Responsive Styling */
+@media (max-width: 1080px) {
+  .nav {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 750px) {
+  .navTitle {
+    font-size: 18px; /* Slightly reduced to fit better on smaller screens */
+  }
+  nav {
+    padding: 10px;
+    height: auto; /* Ensure height adjusts to content */
+  }
+  .navTop img {
+    height: auto; /* Let image adjust naturally within nav height */
+  }
+}
+
+@media (max-width: 400px) {
+  .nav {
+    padding: 11px;
+  }
+}

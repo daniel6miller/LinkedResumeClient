@@ -1,0 +1,14 @@
+.brand-center-vertical {
+    padding-top: 25vh;
+    text-align: center;
+}
+
+.brand img {
+    height:30vh;
+}
+
+.brand p {
+    padding-left: 15%;
+    padding-right: 15%;
+    font-size: 25px;
+}

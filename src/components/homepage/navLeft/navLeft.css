@@ -1,0 +1,7 @@
+.left h3{
+    color: black;
+}
+.left a, .left a:visited, .left a:hover, .left a:active {
+    color: black;  /* Sets the link color to black in all states */
+    text-decoration: none;  /* Removes the underline */
+}

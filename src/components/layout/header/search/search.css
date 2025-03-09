@@ -1,0 +1,47 @@
+.search-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .search-form {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .search-input {
+    flex-grow: 1;
+    padding: 8px 8px 8px 30px; /* Add left padding to make room for the icon */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>'); /* SVG for the magnifying glass */
+    background-repeat: no-repeat;
+    background-position: 8px center; /* Position the icon inside the left padding area */
+    background-size: 16px 16px; /* Adjust size of the icon */
+  }
+  
+  .search-button {
+    display: none; /* Hide the button as search is now instant */
+  }
+  .search-results {
+    position: absolute;
+    left: 0px;
+    margin-top:30px;
+    width: 300px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 5;
+  }
+  
+  .search-result-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+  }
+  
+  .search-result-item:last-child {
+    border-bottom: none;
+  }
+  
+  

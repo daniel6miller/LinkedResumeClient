@@ -1,0 +1,6 @@
+.post {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    margin: 1rem 0;
+  }

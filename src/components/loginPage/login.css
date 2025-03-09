@@ -1,0 +1,72 @@
+.center.login {
+    padding-top: 30vh;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    /* This is often useful to ensure that container can actually take up the full height */
+  }
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This makes the container take up the full viewport height */
+  }
+
+.login-form {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  .login-form input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .login-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .login-form .create-account {
+    background-color: #28a745;
+  }
+
+  .login-form .forget-password {
+    background-color: navy;
+  }
+  
+  .login-form button[type="submit"] {
+    background-color: #16114f;
+  }
+  
+  .login-form a {
+    text-decoration: none;
+    color: #1d09f5;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .login-form hr {
+    margin: 20px 0;
+  }
+  
+  .create-page {
+    text-align: center;
+    font-size: 0.9em;
+  }
+  

@@ -1,0 +1,98 @@
+.documentEditor {
+    padding: 5px;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* Adjust the height as needed */
+}
+
+.document-viewer {
+    border: 1px solid #ccc;
+    padding: 10px;
+    flex: 4; /* Take 80% of the width */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.document-comments {
+    border: 1px solid #ccc;
+    padding: 10px;
+    flex: 1; /* Take 20% of the width */
+    height: 100%;
+    overflow-y: auto; /* Ensure comments scroll if they overflow */
+}
+
+.rpv-core__viewer {
+    width: 100%;
+}
+
+.comment-box {
+    margin-top: 20px;
+}
+
+.comment-box textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.comment-box button {
+    display: block;
+    margin-top: 10px;
+}
+
+.comments-section {
+    margin-top: 30px;
+}
+
+.comments-section h3 {
+    margin-bottom: 10px;
+}
+
+.comment {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.comment p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.comment small {
+    color: #888;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.comment-profile-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-user-name {
+    font-weight: bold;
+    margin: 0;
+}
+
+.comment-date {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+}
+

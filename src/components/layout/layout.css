@@ -1,0 +1,29 @@
+/* layout.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    position: sticky; /* Keeps the header at the top */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it’s above other content */
+    background-color: white; /* Optional: Add background to differentiate */
+}
+
+main {
+    flex: 1; /* Fills the remaining space */
+}
+
+footer {
+    width: 100%;
+    background-color: white; /* Optional */
+}

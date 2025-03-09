@@ -1,0 +1,43 @@
+.cover-photo-container {
+  width: 100%; /* Ensures the container takes the full width of its parent */
+  height: auto; /* Allows the container to adjust based on the image height */
+  position: relative; /* Necessary for absolute positioning of elements inside */
+}
+
+.cover-photo {
+  max-height: 300px; /* Maximum height of the photo */
+  width: 100%; /* Takes the full width of its container */
+  object-fit: cover; /* Ensures the image covers the area without being stretched or squashed */
+  background-position: center; /* Centers the background image */
+  display: block; /* Ensures the image is displayed as a block, taking the full width */
+}
+
+
+.dropdown-menu {
+  background-color: white; /* This sets the background color to white */
+  color: black; /* This sets the text color to black */
+  border: 1px solid #ddd; /* Adds a light border for the dropdown */
+  border-radius: 5px; /* Optional: Rounds the corners of the dropdown */
+  padding: 10px 0; /* Adds some vertical padding inside the dropdown */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Adds a slight shadow for depth */
+  position: absolute; /* Positions the dropdown absolutely */
+  right: 10px; /* Aligns the dropdown to the right */
+  bottom: 50px; /* Positions the dropdown above the button */
+  width: 200px; /* Sets a specific width for the dropdown */
+  z-index: 1000; /* Ensures the dropdown appears above other content */
+}
+
+.dropdown-menu ul {
+  list-style: none; /* Removes the default list styling */
+  margin: 0; /* Removes default margin */
+  padding: 0; /* Removes default padding */
+}
+
+.dropdown-menu li {
+  padding: 8px 20px; /* Adds padding to each dropdown item for clickability and spacing */
+  cursor: pointer; /* Changes the cursor to indicate the items are clickable */
+}
+
+.dropdown-menu li:hover {
+  background-color: #f8f8f8; /* Changes the background on hover for visual feedback */
+}

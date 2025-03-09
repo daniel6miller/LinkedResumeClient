@@ -1,0 +1,20 @@
+.see-more-button {
+    background: none;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    padding: 0;
+    font-size: 1em;
+  }
+  
+  .see-more-button:hover {
+    text-decoration: underline;
+    color: blue;
+  }
+  
+  .post-content span {
+    font-weight: bold;
+  }
+  

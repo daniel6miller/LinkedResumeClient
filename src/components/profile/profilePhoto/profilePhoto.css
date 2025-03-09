@@ -1,0 +1,43 @@
+.profile-photo-container {
+  position: absolute;
+  display: flex;
+  justify-content: center; /* Align container contents to center horizontally */
+  align-items: center; /* Align container contents to center vertically */
+  height: 200px;
+  width: 200px;
+}
+
+.profile-page-photo {
+  background-size: cover;
+  background-position: center; /* Center the background image */
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  border: 3px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+
+.edit-profile-photo {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #000;
+  z-index: 2; /* Adjust if needed to bring above the profile photo */
+}
+
+
+.modal-content {
+  background-color: white;
+}
+
+.crop-modal-content {
+  background-color: black;
+}

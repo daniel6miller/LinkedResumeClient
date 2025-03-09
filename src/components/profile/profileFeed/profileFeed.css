@@ -1,0 +1,120 @@
+h3 {
+    text-align:center;
+}
+
+/* CSS for centering the button and styling */
+.center-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px; /* Add some spacing */
+    background-color: #f8f9fa; /* Light grey background, for example */
+  }
+  
+.center-button {
+  padding: 10px 20px; /* Add some padding */
+  font-size: 16px; /* Increase font size */
+  cursor: pointer; /* Change cursor on hover */
+  border: none;
+  background-color: #007bff; /* Bootstrap primary color for example */
+  color: white;
+  border-radius: 5px; /* Rounded corners for the button */
+  margin-top: 20px; /* Spacing from the top */
+}
+
+.feed-container {
+  display: block;
+  margin: auto;
+  text-align: center; /* Center the text inside the feed container */
+  margin-top: 40px; /* Spacing from the top */
+}
+
+.post-bar {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: stretch; /* Stretch children to fill the width */
+  padding: 8px;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid #d0d3d6;
+  margin-top: 10px;
+}
+
+.profile-pic {
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+  border-radius: 50%; /* Circular image */
+  margin-right: 10px;
+  margin-left: 20%;
+}
+
+.post-bar-section {
+  display: flex;
+  justify-content: center; /* Center children horizontally */
+  align-items: center;
+  margin-bottom: 8px; /* Add some space between the sections */
+}
+
+.post-input, .post-option {
+  border: none;
+  background-color: transparent;
+  padding: 8px 12px;
+  border-radius: 20px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin: 4px; /* Add margin to give space around buttons */
+}
+
+.post-input {
+  flex-grow: 1; /* Make the input grow to fill space */
+  color: #606266;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.post-input:hover, .post-option:hover {
+  background-color: #f3f2ef; /* Light gray background on hover */
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+/* You will need to add the specific classes or use a library like Font Awesome for icons */
+.media-icon:before {
+  content: '📷'; /* Replace with actual icons */
+}
+
+.event-icon:before {
+  content: '📅'; /* Replace with actual icons */
+}
+
+.article-icon:before {
+  content: '✒️'; /* Replace with actual icons */
+}
+
+.feed {
+  margin-top: 20px;
+}
+
+
+.post-user {
+  display: flex; /* This will align children (photo and name) horizontally */
+  align-items: center; /* Vertically centers the items in the line */
+  gap: 10px; /* Adds space between the image and the text */
+}
+
+
+.post-user-photo {
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+  border-radius: 50%; /* Circular image */
+  margin-right: 10px;
+}
+.post-media {
+  max-width: 100%;
+  height: auto;
+}
+    

@@ -1,0 +1,41 @@
+.ToolBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.ToolBar button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.ToolBar button:hover {
+    background-color: grey;
+}
+
+.document-viewer {
+    position: relative;
+}
+
+.highlight-button {
+    position: absolute;
+    z-index: 1000;
+    background-color: grey;
+    cursor: pointer;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    /* right: 10px; Align to the right */
+}

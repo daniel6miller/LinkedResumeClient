@@ -1,0 +1,83 @@
+/* Component CSS File */
+.profilePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-align children horizontally */
+  max-width: 1200px; /* Max-width for the content */
+  margin: auto; /* Center the .profilePage horizontally */
+}
+
+.profileDetails {
+  display: flex; /* This makes it a flex container */
+  justify-content: flex-start; /* Align children to the start of the main axis */
+  align-items: flex-start; /* Align children to the start of the cross axis */
+  margin-top: -100px; /* Optional: Adjust value as needed to overlap with cover photo if desired */
+  width: 100%; /* This will ensure that the container takes the full width of its parent */
+}
+
+.profilePhoto {
+  flex: 0 0 200px; /* This will prevent the photo from growing and keep its width */
+  margin-right: 1rem; /* Add some space between the photo and the info */
+}
+
+.feed-container {
+  width: 100%; /* Take the full width of its parent */
+  max-width: 600px; /* Max width for the feed */
+  margin: 1rem auto; /* Center it horizontally and add margin at the top */
+}
+
+
+/* Additional styles for ProfilePhoto and ProfileInfo components to manage width */
+.profilePhoto, .profileInfo {
+  flex: 1; /* This will allow both children to grow and take up equal space */
+  padding: 1rem; /* Add some space inside each child */
+}
+
+
+/* If you have specific styling for mobile or smaller screens, you can use a media query */
+@media (max-width: 768px) {
+  .profileDetails {
+    flex-direction: column; /* Stack them on top of each other on small screens */
+  }
+}
+
+.profile-info-container {
+  width: calc(100% - 220px); /* Adjust based on .profile-photo-container width + any margins */
+  margin-left: 200px;
+  justify-content: left;
+  /* Other styles */
+}
+
+.button-container {
+  flex: 0 1 auto; /* Do not grow, but can shrink, with base size auto */
+}
+
+.connect-button {
+  padding: 10px 20px; /* Padding inside the button */
+  background-color: #007bff; /* Background color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size */
+}
+
+.connect-count {
+  font-size: 16px; /* Font size for connections count */
+}
+
+.profile-info-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 75px;
+}
+.profile-info-container p{
+font-size: 18px;
+}
+
+.username {
+  width: calc(100% - 220px); /* Adjust based on .profile-photo-container width + any margins */
+  margin-left: 200px;
+  justify-content: left;
+}

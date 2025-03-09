@@ -1,0 +1,70 @@
+.connection-item {
+    max-width: 200px;
+    text-align: center;
+}
+
+.connection-options {
+    max-width: 30%;
+}
+
+/* ConnectionsPage.css - Assuming this is your CSS file for the connections page */
+
+.connection-item {
+    max-width: 200px;
+    /* display: flex; */
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f4f4f4; /* Light gray background for each item */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.connection-item img {
+    width: 200px; /* Fixed size for profile photos */
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%; /* Circular images */
+    margin-right: 20px; /* Space between image and text */
+}
+
+.connection-item div {
+    text-align: center;
+    flex-grow: 1;
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.connection-item h3 {
+    text-align: center;
+    margin: 0; /* Remove default margins */
+    font-size: 1.2em; /* Slightly larger text for names */
+    color: #333; /* Darker text for better readability */
+}
+
+.connection-item button {
+    padding: 5px 15px; /* Padding inside the button */
+    margin-left: 10px; /* Space between buttons */
+    border: none;
+    border-radius: 3px;
+    cursor: pointer; /* Pointer cursor on hover */
+    font-weight: bold; /* Bold font for button text */
+    transition: background-color 0.3s; /* Smooth transition for hover effects */
+}
+
+.connection-item button:hover {
+    background-color: #0056b3; /* Change background on hover */
+    color: white; /* White text on hover */
+}
+
+.connection-item button:first-of-type {
+    background-color: #28a745; /* Green background for accept */
+    color: white;
+}
+
+.connection-item button:last-of-type {
+    background-color: #dc3545; /* Red background for decline */
+    color: white;
+}

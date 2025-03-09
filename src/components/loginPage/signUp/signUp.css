@@ -1,0 +1,114 @@
+.signup-form-container {
+    position: fixed; /* Position it over everything */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Make sure it's above other content */
+  }
+  
+.signup-form-container2 {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .signup-form h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .signup-form p {
+    color: #666;
+    font-size: 14px;
+    padding-right: 10px;
+  }
+  
+  .name-fields {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .signup-form input {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .birthday-container,
+  .gender-container {
+    margin-bottom: 10px;
+  }
+  
+  .birthday-container label,
+  .gender-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .gender-container label {
+    display: inline-block;
+    margin-right: 15px;
+  }
+  
+  .signup-form select {
+    padding: 10px;
+    margin-right: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .form-text {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .signup-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #42b72a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Handle the responsive part as needed */
+  @media (max-width: 768px) {
+    .name-fields {
+      flex-direction: column;
+    }
+  }
+  
+  .error {
+    border: 1px solid red;
+  }
+  
+  .error-text {
+    color: red;
+    font-size: 0.875rem;
+  }
+
+
+  .close-button {
+    align-items: right;
+    position: relative;
+    top: 5%;
+    right: -95%;
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+  }

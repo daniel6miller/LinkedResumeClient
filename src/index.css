@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.center {
+  text-align:center;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
+}
+
+/* Styles for the wrapper */
+.wrapper {
+  display: flex;        /* Enables flexbox layout */
+  justify-content: space-between; /* Distributes space between the items */
+  align-items: stretch; /* Stretches the items to fill the container vertically */
+  height: 100%;         /* Optional: Adjust depending on your layout needs */
+}
+
+/* Styles for each item within the wrapper */
+.wrapperItem {
+  flex: 1;              /* Each item takes equal width */
+  padding: 10px;        /* Adds some space inside each item */
+  box-sizing: border-box; /* Includes padding in the element's total width/height */
+}

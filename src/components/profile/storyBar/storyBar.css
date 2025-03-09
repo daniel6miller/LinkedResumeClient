@@ -1,0 +1,4 @@
+.storyBar {
+    display: flex;
+    overflow-x: auto;
+  }

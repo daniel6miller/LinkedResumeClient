@@ -1,0 +1,241 @@
+/* post.css */
+
+.post-container {
+    /* Style your post component here */
+    z-index: 1001; /* ensures the post container is above the backdrop */
+  }
+
+  .post-modal {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid #d0d3d6;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 60%; /* Slightly wider modal */
+    max-width: 900px; /* Adjust maximum width */
+    height: 60%; /* Larger modal height */
+    max-height: 600px; /* Prevent the modal from exceeding the viewport */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    overflow: hidden;
+  }
+
+  .post-close-button {
+    position: absolute; /* Position the button relative to .post-modal */
+    top: 12px; /* Space from the top */
+    right: 12px; /* Space from the right */
+    background: none; /* No background */
+    border: none;
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 0; /* Remove padding */
+}
+  
+  .post-left {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-right: 1px solid #d0d3d6;
+    overflow-y: auto; /* Add scrolling for text input if needed */
+  }
+
+  .post-right {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 1px solid #ccc;
+  }
+  
+  .post-header {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between profile photo and name */
+  }
+  
+  .profile-photo {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }  
+  
+  .header-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .post-to {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  
+  .post-to-anyone {
+    color: #666;
+    font-size: 0.9em;
+  }
+  
+  .post-textarea {
+    flex-grow: 1; /* Make the text area fill the remaining vertical space */
+    font-size: 1.1em;
+    padding: 12px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    resize: none;
+    outline: none;
+  }
+  
+  .file-preview-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .file-preview {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .post-attach-button {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border: none;
+    font-size: 1.2em;
+    padding: 8px 24px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .post-attach-button:hover {
+    background-color: rgb(207, 83, 0);
+    color: white;
+    border: none;
+    font-size: 1.2em;
+    padding: 8px 24px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .post-button {
+    align-self: stretch; /* Ensure the button stays inside */
+    background-color: #000000;
+    color: white;
+    border: none;
+    font-size: 1.2em;
+    padding: 8px 24px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px; /* Add some spacing above */
+  }
+
+  .post-button:hover {
+    background-color: #027007;
+    color: white;
+    border: none;
+    font-size: 1.2em;
+    padding: 8px 24px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .post-close-button {
+    color: rgb(0, 0, 0);
+    background-color: white;
+    font-size: 1.2em;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+    padding-bottom: 10px;
+  }
+
+  .file-preview-container {
+    flex-grow: 1; /* Allow preview to take available space */
+    width: 100%;
+    height: 100%; /* Ensure it fills the right section */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Prevent preview overflow */
+  }
+  
+  .file-preview {
+    max-width: 100%; /* Scale image or PDF preview to fit */
+    max-height: 100%;
+    object-fit: contain; /* Maintain aspect ratio */
+  }
+  
+  .file-preview-wrapper {
+    position: relative;
+    width: 90%; /* Keep some padding around the preview */
+    height: 90%; /* Ensure it fits within the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .file-preview-controls {
+    position: absolute;
+    bottom: 10px; /* Adjusted to be just above the preview indicator */
+    left: 50%;
+    transform: translateX(-50%); /* Center the controls horizontally */
+    display: flex;
+    justify-content: space-between;
+    width: 80%; /* Restrict width to keep buttons centered */
+    padding: 0 10px; /* Padding to space out the buttons */
+  }
+  
+  .file-preview-controls .prev-button {
+    position: absolute;
+    left: 0; /* Align to the left */
+  }
+  
+  .file-preview-controls .next-button {
+    position: absolute;
+    right: 0; /* Align to the right */
+  }
+  
+  .file-preview-controls button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #333;
+  }
+  
+  .file-preview-indicator {
+    position: absolute;
+    bottom: 40px; /* Above the control buttons */
+    font-size: 1em;
+    color: #666;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .file-preview-controls button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  
+  
+  /* Add appropriate content or classes for the icons */
+  .icon.emoji:before { content: '🙂'; }
+  .icon.camera:before { content: '📸'; }
+  .icon.dice:before { content: '🎲'; }
+  .icon.settings:before { content: '⚙'; }
+  .icon.plus:before { content: '➕'; }
+  

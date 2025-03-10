@@ -48,7 +48,7 @@ function Settings() {
         const fetchUserProfile = async () => {
             if (!username) return; // Wait until username is available
             try {
-                const response = await fetch(`http://localhost:8080/api/user/username/${username}`);
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/username/${username}`);
                 if (!response.ok) throw new Error(`Profile data fetch failed: ${response.status}`);
                 
                 const data = await response.json();
@@ -69,7 +69,7 @@ function Settings() {
         }
 
         try {
-            const response = await fetch("http://localhost:8080/api/user/update/displayMode", {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/update/displayMode`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

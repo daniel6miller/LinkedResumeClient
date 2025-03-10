@@ -62,7 +62,7 @@ const ProfileSettingsModal = ({ profileData, onClose }) => {
         
             setIsChecking(true); // Start loading spinner if desired
         
-            const response = await fetch(`http://localhost:8080/api/user/check-username/${values.username}`);
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/check-username/${values.username}`);
             setIsChecking(false); // Stop loading
         
             if (!response.ok) throw new Error('Failed to check username availability.');
@@ -87,7 +87,7 @@ const ProfileSettingsModal = ({ profileData, onClose }) => {
 
         // Update Users Data
         try {
-            const response = await fetch('http://localhost:8080/api/user/update/info', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/update/info`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

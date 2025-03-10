@@ -10,7 +10,7 @@ const PasswordSettingsModal = ({ profileData, onClose }) => {
 
             try {          
               // Send the password reset email
-              const resetEmailResponse = await fetch(`http://localhost:8080/api/user/password/reset/email/${encodeURIComponent(profileData.email)}`, {
+              const resetEmailResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/user/password/reset/email/${encodeURIComponent(profileData.email)}`, {
                 method: 'POST',
               });
         

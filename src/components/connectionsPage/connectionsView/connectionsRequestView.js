@@ -9,7 +9,7 @@ function ConnectionRequestsView() {
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/connect/requests/${userId}`);
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/connect/requests/${userId}`);
                 if (!response.ok) throw new Error('Failed to fetch connection requests');
                 const data = await response.json();
                 setRequests(data);
@@ -23,7 +23,7 @@ function ConnectionRequestsView() {
     const handleAccept = async (connectionId) => {
         // API call to accept the connection
         try {
-            const response = await fetch('http://localhost:8080/api/connect/accept', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/connect/accept`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ function ConnectionRequestsView() {
     const handleDecline = async (connectionId) => {
         // API call to decline the connection
         try {
-            const response = await fetch(`http://localhost:8080/api/connect/decline`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/connect/decline`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -105,7 +105,7 @@ function Post({ onClose }) {
 
     console.log(userId, postText, files);
     try {
-      const response = await fetch(`http://localhost:8080/api/post/create-post`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/post/create-post`, {
         method: 'POST',
         body: formData, 
       });

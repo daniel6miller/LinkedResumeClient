@@ -31,7 +31,7 @@ function Header() {
     const handleSearch = useCallback(async (searchTerm) => {
         console.log('Searching for:', searchTerm);
         try {
-            const url = `http://localhost:8080/api/search/search?term=${encodeURIComponent(searchTerm)}`;
+            const url = `${process.env.REACT_APP_API_URL}/api/search/search?term=${encodeURIComponent(searchTerm)}`;
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -72,7 +72,7 @@ function Header() {
             <nav id="nav">
                 <div className="navTop">
                     <div className="navItem navTop">
-                        <Link to="/home"><img src="http://localhost:3000/img/LinkedResumeGPTLogo3.jpg" alt="Logo"></img></Link>
+                        <Link to="/home"><img src="https://linkedresume.s3.us-east-1.amazonaws.com/Website/LinkedResumeLogo3.jpg" alt="Logo"></img></Link>
                         <Search onSearch={handleSearch} searchResults={searchResults} />
                     </div>
                     <div className="navItem navTop navCenter">

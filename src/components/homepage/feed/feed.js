@@ -18,7 +18,7 @@ function Feed({ onPostClick }) {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/post/feed');
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/post/feed`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch posts');
                 }

@@ -7,7 +7,7 @@ function ProfileFeed({ userId, profilePhoto, canPost, onPostClick }) {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/post/${userId}`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/post/${userId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch posts');
         }
@@ -65,13 +65,13 @@ function ProfileFeed({ userId, profilePhoto, canPost, onPostClick }) {
                   {isImage(post.documentId.amazonS3Link) && <img src={post.documentId.amazonS3Link} alt="Post media" className="post-media" />}
                   {isPDF(post.documentId.amazonS3Link) && (
                     <>
-                      <img src="http://localhost:3000/img/pdfIcon.png" alt="PDF thumbnail" className="pdf-thumbnail" />
+                      <img src="https://linkedresume.s3.us-east-1.amazonaws.com/Website/pdfIcon.png" alt="PDF thumbnail" className="pdf-thumbnail" />
                       View PDF
                     </>
                   )}
                   {(isDoc(post.documentId.amazonS3Link) || isDocx(post.documentId.amazonS3Link)) && (
                     <>
-                      <img src="http://localhost:3000/img/docIcon.png" alt="Word document" className="word-thumbnail" />
+                      <img src="https://linkedresume.s3.us-east-1.amazonaws.com/Website/docIcon.png" alt="Word document" className="word-thumbnail" />
                       View Document
                     </>
                   )}

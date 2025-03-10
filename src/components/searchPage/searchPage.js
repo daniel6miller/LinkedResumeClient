@@ -15,7 +15,7 @@ function SearchPage() {
             if (!query) return;
             setIsLoading(true);
             try {
-                const response = await fetch(`http://localhost:8080/api/search/search?term=${encodeURIComponent(query)}`);
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/search/search?term=${encodeURIComponent(query)}`);
                 const data = await response.json();
                 if (!response.ok) throw new Error(data.message || 'Could not fetch search results');
                 setSearchResults(data);

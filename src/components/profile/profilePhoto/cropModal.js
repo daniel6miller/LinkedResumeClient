@@ -98,7 +98,7 @@ const CropModal = ({ onClose, profilePhoto }) => {
         formData.append('profilePhotoCrop', blob, 'cropped-image.jpg');
         console.log("formData",formData);
         try {
-            const response = await fetch(`http://localhost:8080/api/user/${userId}/profile-photo-crop`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/${userId}/profile-photo-crop`, {
                 method: 'POST',
                 body: formData,
             });

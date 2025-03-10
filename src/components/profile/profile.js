@@ -18,7 +18,7 @@ function Profile() {
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/user/username/${username}`);
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/username/${username}`);
                 if (!response.ok) throw new Error('Profile data fetch failed');
                 
                 const data = await response.json();
@@ -37,7 +37,7 @@ function Profile() {
 
     const fetchConnectionCount = async (userId) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/connect/count/${userId}`);
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/connect/count/${userId}`);
             if (!response.ok) throw new Error('Failed to fetch connection count');
             const data = await response.json();
             setConnectionCount(data.count);
@@ -50,7 +50,7 @@ function Profile() {
         try {
             const loggedInUserId = sessionStorage.getItem('_id');
             // Construct the URL with proper query parameters
-            const url = `http://localhost:8080/api/connect/connectionStatus?connect_request_user_id=${loggedInUserId}&connect_response_user_id=${userId}`;
+            const url = `${process.env.REACT_APP_API_URL}/api/connect/connectionStatus?connect_request_user_id=${loggedInUserId}&connect_response_user_id=${userId}`;
             const response = await fetch(url);
             const data = await response.json();
             if (response.ok) {
@@ -90,14 +90,14 @@ function Profile() {
     
         if (connectionStatus === 'Disconnect') {
             method = 'DELETE';
-            url = `http://localhost:8080/api/connect/disconnect`;
+            url = `${process.env.REACT_APP_API_URL}/api/connect/disconnect`;
             body = JSON.stringify({
                 connect_request_user_id: sessionStorage.getItem('_id'),
                 connect_response_user_id: profileData._id,
             });
         } else if (connectionStatus === 'Connect') {
             method = 'POST';
-            url = `http://localhost:8080/api/connect/request`;
+            url = `${process.env.REACT_APP_API_URL}zz/api/connect/request`;
             body = JSON.stringify({
                 connect_request_user_id: sessionStorage.getItem('_id'),
                 connect_response_user_id: profileData._id,

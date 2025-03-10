@@ -32,7 +32,7 @@ const PrivacySettingsModal = ({ profileData, onClose }) => {
       }
 
       try {
-        const response = await fetch("http://localhost:8080/api/user/update/privacy", {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/update/privacy`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

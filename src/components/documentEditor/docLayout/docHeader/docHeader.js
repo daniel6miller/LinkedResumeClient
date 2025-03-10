@@ -10,7 +10,7 @@ function Header({ author, title }) {
         <div className="navTop">
             <div className="navItem">
                 <Link to="/home">
-                    <img src="http://localhost:3000/img/LinkedResumeGPTLogo3.jpg" alt="Logo" />
+                    <img src="https://linkedresume.s3.us-east-1.amazonaws.com/Website/LinkedResumeLogo3.jpg" alt="Logo" />
                 </Link>
                 <div className="title-author">
                     <h3>{title}</h3>

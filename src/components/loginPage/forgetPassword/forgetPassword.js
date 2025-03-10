@@ -44,7 +44,7 @@ const ForgetPassword = ({ onClose }) => {
 
     try {
       // Check if there is an account associated with the email
-      const emailCheckResponse = await fetch(`http://localhost:8080/api/user/check-email/${encodeURIComponent(values.email)}`, {
+      const emailCheckResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/user/check-email/${encodeURIComponent(values.email)}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ const ForgetPassword = ({ onClose }) => {
       }
       
       // If email exists, send the password reset email
-      const resetEmailResponse = await fetch(`http://localhost:8080/api/user/password/reset/email/${encodeURIComponent(values.email)}`, {
+      const resetEmailResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/user/password/reset/email/${encodeURIComponent(values.email)}`, {
         method: 'POST',
       });
 

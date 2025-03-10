@@ -59,7 +59,7 @@ const ProfileSettings = ({ onClose }) => {
 
     // Check if there is an account associated with email
     try {
-      const emailCheckResponse = await fetch(`http://localhost:8080/api/user/check-email/${values.email}`);
+      const emailCheckResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/user/check-email/${values.email}`);
       const emailCheckData = await emailCheckResponse.json();
 
       if (!emailCheckResponse.ok) {
@@ -78,7 +78,7 @@ const ProfileSettings = ({ onClose }) => {
 
       // Check if the username is already in use
     try {
-      const usernameCheckResponse = await fetch(`http://localhost:8080/api/user/check-username/${values.username}`);
+      const usernameCheckResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/user/check-username/${values.username}`);
       const usernameCheckData = await usernameCheckResponse.json();
 
       if (!usernameCheckResponse.ok) {
@@ -97,7 +97,7 @@ const ProfileSettings = ({ onClose }) => {
   
     // Create User
     try {
-      const response = await fetch('http://localhost:8080/api/user/create-user', {
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/user/create-user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ const ProfileSettings = ({ onClose }) => {
 
     // Login User
     try {
-      const response = await fetch('http://localhost:8080/api/user/sign-in', {
+      const response = await fetch('${process.env.REACT_APP_API_URL}/api/user/sign-in', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

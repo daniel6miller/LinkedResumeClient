@@ -33,7 +33,7 @@ function Login({ onSignUpClick, onForgetPasswordClick }) {
           }
 
         try {
-            const response = await fetch('http://localhost:8080/api/user/sign-in', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/sign-in`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

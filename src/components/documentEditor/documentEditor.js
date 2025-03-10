@@ -24,7 +24,7 @@ function DocumentEditor() {
     useEffect(() => {
         const fetchDocument = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/document/${documentId}`);
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/document/${documentId}`);
                 if (!response.ok) throw new Error('Document fetch failed');
                 
                 const data = await response.json();
@@ -66,7 +66,7 @@ function DocumentEditor() {
         }
 
         try {
-            const response = await fetch(`http://localhost:8080/api/document/${documentId}/addComment`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/document/${documentId}/addComment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -136,7 +136,7 @@ function DocumentEditor() {
 
     const saveHighlight = async (highlight) => {
         try {
-            await fetch(`http://localhost:8080/api/document/${documentId}/addHighlight`, {
+            await fetch(`${process.env.REACT_APP_API_URL}/api/document/${documentId}/addHighlight`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -150,7 +150,7 @@ function DocumentEditor() {
 
     const handleEditComment = async (commentId, newText) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/document/${documentId}/editComment`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/document/${documentId}/editComment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -171,7 +171,7 @@ function DocumentEditor() {
 
     const handleRemoveComment = async (commentId) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/document/${documentId}/removeComment`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/document/${documentId}/removeComment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -28,7 +28,7 @@ function ProfilePhoto({ profilePhotoCrop, profilePhoto, canEdit }) {
         formData.append('profilePhoto', file);
 
         try {
-            const response = await fetch(`http://localhost:8080/api/user/${userId}/profile-photo`, { 
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/${userId}/profile-photo`, { 
                 method: 'POST',
                 body: formData,
             });
@@ -55,7 +55,7 @@ function ProfilePhoto({ profilePhotoCrop, profilePhoto, canEdit }) {
 
     const handleDeletePhoto = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/user/${userId}/delete-profile-photo`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/${userId}/delete-profile-photo`, {
                 method: 'POST', // or 'DELETE', depending on your API design
             });
             if (!response.ok) {

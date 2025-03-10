@@ -32,7 +32,7 @@ function PasswordReset() {
     try {
       // Step 1: Validate the token
       console.log(token); // remove this after debugging
-      const validateResponse = await fetch('http://localhost:8080/api/user/password/reset/validate', {
+      const validateResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/user/password/reset/validate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token }),
@@ -44,7 +44,7 @@ function PasswordReset() {
       }
 
       // Step 2: Reset the password
-      const resetResponse = await fetch('http://localhost:8080/api/user/password/reset', {
+      const resetResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/user/password/reset`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token, password }),

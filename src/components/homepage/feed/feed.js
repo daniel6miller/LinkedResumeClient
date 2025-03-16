@@ -9,28 +9,72 @@ import FilePreview from './filePreview/filePreview';
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 function Feed({ onPostClick }) {
-    const [posts, setPosts] = useState([]);
     const profilePhotoCrop = sessionStorage.getItem('profilePhotoCrop');
+    const userId = sessionStorage.getItem('_id');
+    const [connections, setConnections] = useState([]);
+    const [posts, setPosts] = useState([]);
+    const [dropdownIndex, setDropdownIndex] = useState(null);
 
+    const toggleDropdown = (index) => {
+        setDropdownIndex(dropdownIndex === index ? null : index);
+    };
 
+    const handleDeletePost = async (postId) => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/post/delete/${postId}`, {
+                method: 'DELETE',
+            });
+            if (!response.ok) throw new Error('Failed to delete post');
     
-
-    useEffect(() => {
-        const fetchPosts = async () => {
+            // Update posts state to remove the deleted post
+            setPosts(posts.filter(post => post._id !== postId));
+        } catch (error) {
+            console.error('Error deleting post:', error);
+        }
+    };
+    
+    useEffect(() => { 
+        const fetchConnections = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/post/feed`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch posts');
-                }
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/connect/connections/${userId}`);
+                if (!response.ok) throw new Error('Failed to fetch connections');
+                const data = await response.json();
+                setConnections(data);
+            } catch (error) {
+                console.error('Error fetching connections:', error);
+            }
+        };
+    
+        fetchConnections();
+    }, [userId]);
+    
+    useEffect(() => { 
+        const fetchPosts = async () => {
+            if (!userId) return; // Ensure user ID is available
+    
+            // Extract connection user IDs
+            const connectionIds = connections.map(conn => conn.user._id);
+    
+            // Include the signed-in user’s ID
+            const userIds = [...connectionIds, userId];
+    
+            try {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/post/feed`, {
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userIds }),
+                });
+    
+                if (!response.ok) throw new Error('Failed to fetch posts');
                 const data = await response.json();
                 setPosts(data.posts);
             } catch (error) {
                 console.error('Error fetching posts:', error);
             }
         };
-
+    
         fetchPosts();
-    }, []);
+    }, [connections, userId]); // Re-run when connections or userId changes
 
     return (
         <div>
@@ -51,7 +95,10 @@ function Feed({ onPostClick }) {
                 </div>
             </div>
             <div className="feed">
-                {posts.map((post, index) => (
+            {posts.length === 0 ? (
+                <p>Connect with users to see their posts</p>
+            ) : (
+                posts.map((post, index) => (
                     <div key={index} className="post">
                         {post.userId && (
                             <div className="post-user">
@@ -65,12 +112,26 @@ function Feed({ onPostClick }) {
                                 </Link>
                             </div>
                         )}
-                        <PostContent text={post.text}></PostContent>
+
+                        {/* Three-dot dropdown menu */}
+                        <div className="post-options">
+                            <button className="options-button" onClick={() => toggleDropdown(index)}>⋮</button>
+                            {dropdownIndex === index && (
+                                <div className="post-dropdown-menu">
+                                    {post.userId._id === userId && (
+                                        <button onClick={() => handleDeletePost(post._id)}>Delete Post</button>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+
+                        <PostContent text={post.text} />
                         {post.documentIds && post.documentIds.length > 0 && (
                             <FilePreview documents={post.documentIds} />
                         )}
                     </div>
-                ))}
+                ))
+            )}
             </div>
         </div>
     );

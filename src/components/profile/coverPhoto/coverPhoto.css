@@ -41,3 +41,20 @@
 .dropdown-menu li:hover {
   background-color: #f8f8f8; /* Changes the background on hover for visual feedback */
 }
+.cover-photo-button {
+  padding: 10px 10px;
+  background-color: white; /* Example color */
+  color: black;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.cover-photo-button:hover {
+  background-color: grey; /* Hover effect */
+}

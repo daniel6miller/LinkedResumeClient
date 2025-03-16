@@ -97,7 +97,7 @@ function Profile() {
             });
         } else if (connectionStatus === 'Connect') {
             method = 'POST';
-            url = `${process.env.REACT_APP_API_URL}zz/api/connect/request`;
+            url = `${process.env.REACT_APP_API_URL}/api/connect/request`;
             body = JSON.stringify({
                 connect_request_user_id: sessionStorage.getItem('_id'),
                 connect_response_user_id: profileData._id,

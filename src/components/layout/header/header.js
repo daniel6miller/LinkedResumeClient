@@ -76,10 +76,10 @@ function Header() {
                         <Search onSearch={handleSearch} searchResults={searchResults} />
                     </div>
                     <div className="navItem navTop navCenter">
-                        <Link to="/home" className='link-nav'><i className='bx bx-home' id="home-icon"></i></Link>
-                        <Link to="/files" className='link-nav'><i className='bx bx-file' id="file-icon"></i></Link>
+                        {/* <Link to="/home" className='link-nav'><i className='bx bx-home' id="home-icon"></i></Link> */}
+                        {/* <Link to="/files" className='link-nav'><i className='bx bx-file' id="file-icon"></i></Link>
                         <h1 className="navTitle"><Link to="/friends" className='link-nav'>Network</Link></h1>
-                        <h1 className="navTitle"><Link to="/explore" className='link-nav'>Explore</Link></h1>
+                        <h1 className="navTitle"><Link to="/explore" className='link-nav'>Explore</Link></h1> */}
                     </div>
                     <div className="navItem navTop profile-dropdown-container">
                         <img

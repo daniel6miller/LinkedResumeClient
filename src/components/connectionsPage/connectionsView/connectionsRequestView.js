@@ -68,7 +68,10 @@ function ConnectionRequestsView() {
         <div className='wrapperItem'>
             <div className='connections'>
                 <h1>Connection Requests</h1>
-                {requests.map((request, index) => (
+                {requests.length === 0 ? (
+                    <p>You have no pending connection requests.</p>
+                ) : (
+                requests.map((request, index) => (
                     <div key={index} className="connection-item">
                         <Link to={`/${request.requester.username}`} key={index} style={{ textDecoration: 'none' }}>
                             <img src={request.requester.profilePhotoCrop || 'default_profile_photo_url'} alt={`${request.requester.firstName} ${request.requester.lastName}`} />
@@ -81,7 +84,8 @@ function ConnectionRequestsView() {
                             <button onClick={() => handleDecline(request.connectionId)}>Decline</button>
                         </div>
                     </div>
-                ))}
+                ))
+            )}
             </div>
         </div>
     );

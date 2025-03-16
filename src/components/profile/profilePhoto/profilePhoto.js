@@ -85,9 +85,9 @@ function ProfilePhoto({ profilePhotoCrop, profilePhoto, canEdit }) {
                     <div className="modal-content">
                         <img src={profilePhotoCrop} alt="Profile" style={{ width: '50%', height: '50%', objectFit: 'cover' }} />
                         <div className="modal-actions">
-                            {canEdit && <button onClick={toggleCropModal}>Crop Photo</button>}
-                            {canEdit && <button onClick={() => fileInputRef.current.click()}>Change Photo</button>}
-                            {canEdit && <button onClick={handleDeletePhoto}>Delete Photo</button>}
+                            {canEdit && <button className="profile-modal-button" onClick={toggleCropModal}>Crop Photo</button>}
+                            {canEdit && <button className="profile-modal-button" onClick={() => fileInputRef.current.click()}>Change Photo</button>}
+                            {canEdit && <button className="profile-modal-button" onClick={handleDeletePhoto}>Delete Photo</button>}
                         </div>
                         <input type="file" ref={fileInputRef} style={{ display: 'none' }} accept="image/*" onChange={handleFileSelect} />
                     </div>

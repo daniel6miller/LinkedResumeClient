@@ -91,6 +91,23 @@ nav {
   overflow: visible; /* Ensure no clipping of content */
 }
 
+.dropdown-item {
+  display: block; /* Ensures full width for clicks */
+  text-decoration: none;
+  color: inherit;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 8px 12px;
+  width: 100%;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0; /* Match hover effect */
+}
+
 
 .dropdown-item {
   display: block;
@@ -98,7 +115,7 @@ nav {
   text-decoration: none;
   color: #333;
   font-size: 14px;
-  transition: background-color 0.2s;
+  background-color: white;
   white-space: nowrap; /* Prevent text wrapping */
 }
 

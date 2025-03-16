@@ -22,17 +22,23 @@ function ConnectionsView() {
     return (
         <div className='wrapperItem'>
             <div className='connections'>
-                <h1> Connections </h1>
-                {connections.map((connection, index) => (
-                    <div className='connection-item'>
-                        <Link to={`/${connection.user.username}`} key={index} style={{ textDecoration: 'none' }}>
-                            <img src={connection.user.profilePhotoCrop || 'default_profile_photo_url'} alt={`${connection.user.firstName} ${connection.user.lastName}`} className="connection-profile-photo" />
-                            <div>
-                                <h3>{`${connection.user.firstName} ${connection.user.lastName}`}</h3>
-                            </div>
-                        </Link>
-                    </div>
-                ))}
+                <h1>Connections</h1>
+                {connections.length === 0 ? (
+                    <p>You have no connections.</p>
+                ) : (
+                    connections.map((connection, index) => (
+                        <div className='connection-item' key={index}>
+                            <Link to={`/${connection.user.username}`} style={{ textDecoration: 'none' }}>
+                                <img src={connection.user.profilePhotoCrop || 'default_profile_photo_url'} 
+                                     alt={`${connection.user.firstName} ${connection.user.lastName}`} 
+                                     className="connection-profile-photo" />
+                                <div>
+                                    <h3>{`${connection.user.firstName} ${connection.user.lastName}`}</h3>
+                                </div>
+                            </Link>
+                        </div>
+                    ))
+                )}
             </div>
         </div>
     );

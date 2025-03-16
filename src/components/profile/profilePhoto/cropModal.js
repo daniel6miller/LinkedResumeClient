@@ -5,7 +5,9 @@ import 'react-image-crop/dist/ReactCrop.css';
 const CropModal = ({ onClose, profilePhoto }) => {
     const userId = sessionStorage.getItem('_id');
     const src = encodeURI(profilePhoto);
-    const [crop, setCrop] = useState({x: 0, y: 0, height: 50, minHeight: 5, minWidth: 5 });
+
+    // Set initial crop to cover the full image (no crop applied yet)
+    const [crop, setCrop] = useState({ x: 0, y: 0, width: 100, height: 100, minHeight: 5, minWidth: 5 });
     const [completedCrop, setCompletedCrop] = useState(null);
     const [displayDimensions, setDisplayDimensions] = useState({width: 0, height: 0}); // Store the dimensions here
 
@@ -37,8 +39,12 @@ const CropModal = ({ onClose, profilePhoto }) => {
     async function handleSaveClick() {
         if (completedCrop) {
             getCroppedImg(completedCrop, displayDimensions);
+        } else {
+            // If no crop was made, use the default crop values
+            const defaultCrop = { x: 0, y: 0, width: 100, height: 100 };
+            getCroppedImg(defaultCrop, displayDimensions);
         }
-    };
+    }
 
     const handleCropChange = useCallback((newCrop) => {
         // Enforce minimum dimensions
@@ -132,7 +138,7 @@ const CropModal = ({ onClose, profilePhoto }) => {
                     <img src={src} crop={crop} onLoad={onImageLoad} onChange={handleCropChange} onComplete={handleCompleteCrop} />
                     </ReactCrop>
                 </div>
-                <button onClick={handleSaveClick}>Save Photo</button>
+                <button className="crop-modal-save-button" onClick={handleSaveClick}>Save Photo</button>
             </div>
         </div>
     );

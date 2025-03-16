@@ -84,9 +84,9 @@ function CoverPhoto({ coverPhotoCrop, coverPhoto, canEdit }) {
                     <div className="modal-content">
                         <img src={coverPhotoCrop} alt="Cover Photo" style={{ width: '50%', height: '50%', objectFit: 'cover' }} />
                         <div className="modal-actions">
-                            {canEdit && <button onClick={toggleCropModal}>Crop Photo</button>}
-                            {canEdit && <button onClick={() => fileInputRef.current.click()}>Change Photo</button>}
-                            {canEdit && <button onClick={handleDeletePhoto}>Delete Photo</button>}
+                            {canEdit && <button className="cover-photo-button" onClick={toggleCropModal}>Crop Photo</button>}
+                            {canEdit && <button className="cover-photo-button" onClick={() => fileInputRef.current.click()}>Change Photo</button>}
+                            {canEdit && <button className="cover-photo-button" onClick={handleDeletePhoto}>Delete Photo</button>}
                         </div>
                         <input type="file" ref={fileInputRef} style={{ display: 'none' }} accept="image/*" onChange={handleFileSelect} />
                     </div>

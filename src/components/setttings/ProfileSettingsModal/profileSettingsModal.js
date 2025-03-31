@@ -52,6 +52,10 @@ const ProfileSettingsModal = ({ profileData, onClose }) => {
             console.error('Validation errors',errors);
             return; // stop the form from submitting if their are validation errors
         }
+        window.gtag('event', 'click', {
+            event_category: 'Button',
+            event_label: 'Update Profile'
+        });
     
         // Check if the username is already in use
         try {

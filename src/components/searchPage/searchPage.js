@@ -52,7 +52,7 @@ function SearchPage() {
                                 searchResults.users.map((user, index) => (
                                     <div key={index} className="search-result-item">
                                         <Link to={`/${user.username}`}>
-                                            {user.firstName} {user.lastName}
+                                        <span><img className="Search-img" src={user.profilePhotoCrop}></img> {user.firstName} {user.lastName}</span>
                                         </Link>
                                     </div>
                                 ))

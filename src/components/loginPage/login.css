@@ -70,3 +70,12 @@ body, html {
     font-size: 0.9em;
   }
   
+  .error-text {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 4px;
+}
+.input-error {
+    border: 1px solid red;
+    background-color: #ffe6e6;
+}

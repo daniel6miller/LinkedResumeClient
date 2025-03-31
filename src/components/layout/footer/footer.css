@@ -1,6 +1,10 @@
 /* footer.css */
-footer {
+/* Footer stays at the bottom naturally */
+.footer {
+    display: flex;
+    flex-direction: column;
     text-align: center;
     padding: 10px 20px;
     border-top: 1px solid #ccc;
+    background-color: #f8f8f8;
 }

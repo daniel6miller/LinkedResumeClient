@@ -1,0 +1,8 @@
+.Search-img {
+    width: 24px; /* Adjust width to match text size */
+    height: 24px; /* Maintain square shape */
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover; /* Ensure it crops properly */
+    margin-right: 8px; /* Add spacing between image and text */
+    vertical-align: middle; /* Align with text */
+}

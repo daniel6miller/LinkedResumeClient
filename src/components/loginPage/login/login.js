@@ -39,7 +39,7 @@ function Login({ onSignUpClick, onForgetPasswordClick }) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    username: username,
+                    username: username.toLowerCase(),
                     password: password,
                 }),
             });
@@ -65,6 +65,7 @@ function Login({ onSignUpClick, onForgetPasswordClick }) {
             }
         } catch (error) {
             console.error('Error during login:', error);
+            setErrors({ username: 'Server error. Please try again later.', password: '' });
         }
     };
 

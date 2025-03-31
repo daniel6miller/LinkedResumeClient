@@ -9,6 +9,7 @@ function Search({ onSearch, searchResults }) {
     const location = useLocation();
 
     const handleInputChange = (e) => {
+        e.preventDefault(); 
         setSearchTerm(e.target.value);
     };
 

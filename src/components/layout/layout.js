@@ -4,19 +4,19 @@ import Footer from './footer/footer';
 import './layout.css';
 
 function Layout({ children }) {
-  return (
-      <>
-          <header>
-              <Header />
-          </header>
-          <main>
-              {children}
-          </main>
-          <footer>
-              <Footer />
-          </footer>
-      </>
-  );
-}
+    return (
+      <div className="layout-container">
+        <header>
+          <Header />
+        </header>
+        <main>
+          {children}
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
+    );
+  }
 
 export default Layout;

@@ -22,7 +22,9 @@ function Feed({ onPostClick }) {
     const handleDeletePost = async (postId) => {
         try {
             const response = await fetch(`${process.env.REACT_APP_API_URL}/api/post/delete/${postId}`, {
-                method: 'DELETE',
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId }),
             });
             if (!response.ok) throw new Error('Failed to delete post');
     
@@ -76,6 +78,81 @@ function Feed({ onPostClick }) {
         fetchPosts();
     }, [connections, userId]); // Re-run when connections or userId changes
 
+    const handleLike = async (postId) => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/post/like/${postId}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId }),
+            });
+    
+            if (!response.ok) throw new Error('Failed to like post');
+    
+            // Update posts state
+            setPosts((prevPosts) =>
+                prevPosts.map((post) =>
+                    post._id === postId ? { ...post, likes: post.likes + 1 } : post
+                )
+            );
+        } catch (error) {
+            console.error('Error liking post:', error);
+        }
+    };
+    
+    const [commentModal, setCommentModal] = useState({ isOpen: false, postId: null, commentText: '' });
+
+    const openCommentModal = (postId) => {
+        setCommentModal({ isOpen: true, postId, commentText: '' });
+    };
+
+    const closeCommentModal = () => {
+        setCommentModal({ isOpen: false, postId: null, commentText: '' });
+    };
+
+
+    const handleCommentSubmit = async () => {
+        if (!commentModal.commentText.trim()) return;
+    
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/post/comment`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    postId: commentModal.postId,
+                    text: commentModal.commentText,
+                    userId,
+                }),
+            });
+    
+            if (!response.ok) throw new Error('Failed to add comment');
+    
+            const newComment = await response.json();
+    
+            // Update posts state
+            setPosts((prevPosts) =>
+                prevPosts.map((post) =>
+                    post._id === commentModal.postId
+                        ? { ...post, comments: [newComment, ...post.comments] }
+                        : post
+                )
+            );
+    
+            closeCommentModal();
+        } catch (error) {
+            console.error('Error adding comment:', error);
+        }
+    };
+    
+
+    const loadMoreComments = (postId) => {
+        setPosts((prevPosts) =>
+            prevPosts.map((post) =>
+                post._id === postId ? { ...post, showAllComments: true } : post
+            )
+        );
+    };
+    
+
     return (
         <div>
             <div className="post-bar">
@@ -100,35 +177,122 @@ function Feed({ onPostClick }) {
             ) : (
                 posts.map((post, index) => (
                     <div key={index} className="post">
-                        {post.userId && (
-                            <div className="post-user">
-                                <Link to={`/${post.userId.username}`} className='link-feed'>
-                                    <img
-                                        src={post.userId.profilePhotoCrop}
-                                        alt={`${post.userId.firstName}'s profile`}
-                                        className="post-user-photo"
-                                    />
-                                    <h4>{`${post.userId.firstName} ${post.userId.lastName}`}</h4>
-                                </Link>
-                            </div>
-                        )}
-
-                        {/* Three-dot dropdown menu */}
-                        <div className="post-options">
-                            <button className="options-button" onClick={() => toggleDropdown(index)}>⋮</button>
-                            {dropdownIndex === index && (
-                                <div className="post-dropdown-menu">
-                                    {post.userId._id === userId && (
-                                        <button onClick={() => handleDeletePost(post._id)}>Delete Post</button>
-                                    )}
+                        <div className="post-header">
+                            {post.userId && (
+                                <div className="post-user">
+                                    <Link to={`/${post.userId.username}`} className='link-feed'>
+                                        <img
+                                            src={post.userId.profilePhotoCrop}
+                                            alt={`${post.userId.firstName}'s profile`}
+                                            className="post-user-photo"
+                                        />
+                                        <h4>{`${post.userId.firstName} ${post.userId.lastName}`}</h4>
+                                    </Link>
                                 </div>
                             )}
+
+                            {/* Three-dot dropdown menu */}
+                            <div className="post-options">
+                                <button className="options-button" onClick={() => toggleDropdown(index)}>⋮</button>
+                                {dropdownIndex === index && (
+                                    <div className="post-dropdown-menu">
+                                        {post.userId._id === userId && (
+                                            <button onClick={() => handleDeletePost(post._id)}>Delete Post</button>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
                         </div>
 
                         <PostContent text={post.text} />
                         {post.documentIds && post.documentIds.length > 0 && (
                             <FilePreview documents={post.documentIds} />
                         )}
+
+                        {/* Like & Comment Buttons */}
+                        <div className="post-actions">
+                            <button className="like-button" onClick={() => handleLike(post._id)}>
+                                👍 {post.likes}
+                            </button>
+                            <button className="comment-button" onClick={() => openCommentModal(post._id)}>
+                                💬 Comment
+                            </button>
+                        </div>
+
+                        {/* Top Comment Display */}
+                        {post.comments && post.comments.length > 0 && (
+                            <div className="post-comments">
+                                <>
+                                    {post.showAllComments ? (
+                                        post.comments.map((comment, index) => (
+                                            <div key={index} className="comment">
+                                                <div className="comment-header">
+                                                    {comment.userId?.profilePhotoCrop && (
+                                                        <img
+                                                            src={comment.userId.profilePhotoCrop}
+                                                            alt="Profile"
+                                                            className="profile-photo"
+                                                        />
+                                                    )}
+                                                    <strong>
+                                                        {comment.userId
+                                                            ? `${comment.userId.firstName} ${comment.userId.lastName}`
+                                                            : "Unknown User"}
+                                                    </strong>
+                                                </div>
+                                                <p className="comment-text">{comment.text}</p>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <div className="top-comment">
+                                            <div className="comment-header">
+                                                {post.comments[0].userId?.profilePhoto && (
+                                                    <img
+                                                        src={post.comments[0].userId.profilePhoto}
+                                                        alt="Profile"
+                                                        className="profile-photo"
+                                                    />
+                                                )}
+                                                <strong>
+                                                    {post.comments[0].userId
+                                                        ? `${post.comments[0].userId.firstName} ${post.comments[0].userId.lastName}`
+                                                        : "Unknown User"}
+                                                </strong>
+                                            </div>
+                                            <p className="comment-text">{post.comments[0].text}</p>
+                                        </div>
+                                    )}
+
+                                    {!post.showAllComments && post.comments.length > 1 && (
+                                        <button
+                                            className="load-more-comments"
+                                            onClick={() => loadMoreComments(post._id)}
+                                        >
+                                            Load more comments
+                                        </button>
+                                    )}
+                                </>
+                            </div>
+                        )}
+                        {commentModal.isOpen && (
+                            <div className="modal-overlay">
+                                <div className="modal">
+                                    <h3 className="modal-title">Add a Comment</h3>
+                                    <textarea
+                                        className="comment-input"
+                                        value={commentModal.commentText}
+                                        onChange={(e) => setCommentModal({ ...commentModal, commentText: e.target.value })}
+                                        placeholder="Write your comment..."
+                                    />
+                                    <div className="modal-actions">
+                                        <button className="post-button" onClick={handleCommentSubmit}>Post</button>
+                                        <button className="cancel-button" onClick={closeCommentModal}>Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+
                     </div>
                 ))
             )}

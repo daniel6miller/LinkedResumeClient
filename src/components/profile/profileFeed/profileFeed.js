@@ -50,7 +50,10 @@ function ProfileFeed({ userId, profilePhoto, canPost, onPostClick }) {
         </div>
       )}
       <div className="feed">
-        {posts.map((post, index) => (
+      {posts.length === 0 ? (
+                <p>Connect with users to see their posts</p>
+            ) : (
+        posts.map((post, index) => (
           <div key={index} className="post">
             {post.userId && (
               <div className="post-user">
@@ -79,7 +82,8 @@ function ProfileFeed({ userId, profilePhoto, canPost, onPostClick }) {
               </div>
             )}
           </div>
-        ))}
+        ))
+        )}
       </div>
     </div>
   );

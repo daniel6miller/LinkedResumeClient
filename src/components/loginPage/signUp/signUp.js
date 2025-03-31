@@ -88,7 +88,10 @@ const SignUp = ({ onClose }) => {
       }
     } catch (error) {
       console.error('Error checking username:', error);
-      setErrors({ ...errors, username: 'Username Already in Use.' });
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        username: 'Username is already in use.',
+      }));
       return; // Stop submission if there was an error
     }
   
@@ -103,7 +106,7 @@ const SignUp = ({ onClose }) => {
           firstName: values.firstName,
           lastName: values.lastName,
           email: values.email,
-          username: values.username,
+          username: values.username.toLowerCase(),
           password: values.password,
           // birthday: values.birthday,
           // gender: String,
@@ -119,7 +122,10 @@ const SignUp = ({ onClose }) => {
 
     } catch (error) {
       console.error('Failed to create user', error);
-      // Handle errors
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        general: 'Failed to create user. Please try again later.',
+      }));
     }
 
     // Login User
@@ -130,7 +136,7 @@ const SignUp = ({ onClose }) => {
               'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-              username: values.username,
+              username: values.username.toLowerCase(),
               password: values.password,
           }),
       });
@@ -148,10 +154,17 @@ const SignUp = ({ onClose }) => {
           navigate('/home'); // Redirect to home page
       } else {
           console.error('Login failed:', data.message);
-          // Handle errors, such as showing a notification to the user
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            login: data.message || 'Login failed. Please try again.',
+          }));
       }
     } catch (error) {
-        console.error('Error during login:', error);
+        console.error('Error during login:');
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          login: 'Error during login. Please check your credentials.',
+        }));
     }
   };
 
@@ -194,7 +207,7 @@ const SignUp = ({ onClose }) => {
     <div className="signup-form-container">
       <div className="signup-form-container2">
         <form className="signup-form" onSubmit={handleSubmit}>
-          <button className="close-button" onClick={onClose}>X</button>
+        <button type="button" className="close-button" onClick={onClose}>X</button>
           <h1>Sign Up</h1>
           <p>It's quick and easy.</p>
           {errors.firstName && <span className="error-text">{errors.firstName}</span>}

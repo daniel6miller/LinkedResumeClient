@@ -78,7 +78,7 @@ function ProfilePhoto({ profilePhotoCrop, profilePhoto, canEdit }) {
     return (
         <div className="profile-photo-container">
             <div className="profile-page-photo" onClick={toggleModal}>
-                <img src={profilePhotoCrop} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
+                <img src={profilePhotoCrop || "https://linkedresume.s3.us-east-1.amazonaws.com/Website/LinkedResumeLogo3.jpg"} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }}/>
             </div>
             {modalOpen && (
                 <Modal onClose={toggleModal}>

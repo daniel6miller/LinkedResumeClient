@@ -82,7 +82,7 @@ function CoverPhoto({ coverPhotoCrop, coverPhoto, canEdit }) {
             {modalOpen && (
                 <Modal onClose={toggleModal}>
                     <div className="modal-content">
-                        <img src={coverPhotoCrop} alt="Cover Photo" style={{ width: '50%', height: '50%', objectFit: 'cover' }} />
+                        <img src={coverPhotoCrop || "https://linkedresume.s3.us-east-1.amazonaws.com/Website/LinkedResumeLogo3.jpg"} alt="Cover Photo" style={{ width: '50%', height: '50%', objectFit: 'cover' }} />
                         <div className="modal-actions">
                             {canEdit && <button className="cover-photo-button" onClick={toggleCropModal}>Crop Photo</button>}
                             {canEdit && <button className="cover-photo-button" onClick={() => fileInputRef.current.click()}>Change Photo</button>}

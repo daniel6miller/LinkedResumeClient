@@ -1,10 +1,19 @@
 # LinkedResume
-This is a Social Media Web Application. <br>
-Databse: Mongo DB <br>
+This is a Client side code to a Social Media Web Application. <br>
+# Tech Stack:
+Database: MongoDB <br>
 Object Storage: AWS S3 <br>
-Front End: React JS <br>
-Back End: Node JS Express JS <br>
+Front End: React.js <br>
+Back End: Node.js, Express.js <br>
+Front-End Delivery using Vercel <br>
+Back End Server runs on AWS EC2 <br>
 
+# Features
+User profile creation and customization <br>
+Document upload and sharing (AWS S3 integration) <br>
+Real-time interactions (likes, comments, and notifications) <br>
+Secure authentication using JWT & OAuth <br>
+API rate limiting and security measures <br>
 
 ## To Set up and run this application on your PC
 1. Open VSCode
@@ -16,6 +25,7 @@ Back End: Node JS Express JS <br>
 ### To Run the client side: npm start when in the client side directory
 ### To Run the server: npm start when in the server repo
 
+# Front-End Development Guide:
 ## How to add a React component to the front-end:
 1. copy the component template folder from src/templates and paste it in src/client/src/components
 2. import component into parent component:
@@ -57,7 +67,7 @@ Use the params by:
 ```html
 let { params } = useParams();
 ```
-
+# Back End Development Guide
 ## How to Build API on back-end:
 1. Start in server.js and add
 ```html
@@ -99,3 +109,5 @@ This should go in your components function but not in the return
     }
   };
 ```
+# License
+This project is licensed under the MIT License.

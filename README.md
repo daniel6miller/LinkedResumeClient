@@ -1,5 +1,5 @@
 # LinkedResume
-This is a Social Media Web Application. <br>
+This is a Client side code to a Social Media Web Application. <br>
 # Tech Stack:
 Database: MongoDB <br>
 Object Storage: AWS S3 <br>
